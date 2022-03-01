@@ -74,4 +74,52 @@ new Date,c={},d=Object.keys(a||{}),e=0,f;f=d[e];e++)if(a.hasOwnProperty(f)&&"und
 
 
 
-</body><loom-container id="lo-engage-ext-container"><loom-shadow classname="resolved"></loom-shadow></loom-container><loom-container id="lo-companion-container"><loom-shadow classname="resolved"></loom-shadow></loom-container></html>
+
+  <div class="container-fluid">
+    <div class="row">
+        <button class="btn btn-primary my-1 mx-auto" onclick="loadAlbums()"> Load Albums</button>
+    </div>
+    <div id="album-wrapper" class="row">
+
+    </div>
+</div>
+
+
+<script>
+  
+  
+  const albumWrapper = document.querySelector("#album-wrapper")
+
+function loadAlbums() {
+    console.log("Loading albums...")
+
+    fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem")
+        .then(response => {
+            console.log(response.status)
+            return response.json()
+        })
+        .then(data=> {
+            for (const datas of data) {
+                albumWrapper.innerHTML += `
+                    <div class="col-12 col-md-6 col-lg-3">
+                        
+                        <h3>${data.title}</h3>
+                        
+                    </div>
+                `
+            }
+        })
+        .catch(error => {
+            console.error(error)
+        })
+}
+
+
+
+
+  </script>
+
+
+</body>
+<loom-container id="lo-engage-ext-container"><loom-shadow classname="resolved"></loom-shadow></loom-container><loom-container id="lo-companion-container"><loom-shadow classname="resolved"></loom-shadow></loom-container>
+</html>
