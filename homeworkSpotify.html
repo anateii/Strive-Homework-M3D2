@@ -737,7 +737,7 @@ border-radius: 3px;
 
 <main>
 
-  <!--FIRST ROW
+  <!--FIRST ROW-->
 
   <div class="titles">
     <h1>Good morning</h1>
@@ -813,14 +813,19 @@ border-radius: 3px;
       </div>
 
     </div>
-  </div>-->
+  </div>
 
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
         <button class="btn btn-primary my-1 mx-auto" onclick="loadAlbums()"> Load Albums</button>
     </div>
-    <div id="album-wrapper" class="row">
-
+    <div class="morning-wrapper">
+        <div id="album-wrapper" class="row" >
+            <div class="red-column">
+                
+            </div>
+        
+        </div>
     </div>
 </div>
   
@@ -977,11 +982,16 @@ function loadAlbums() {
         .then(data=> {
             for (const element of data.data) {
                 albumWrapper.innerHTML += `
-                    <div class="col-12 col-md-6 col-lg-3 text-white">
-                        <img src=${element.album.cover} alt="" class="img-fluid">
-                        <h3>${element.title}</h3>
-                        
+                    <div class="col-12 col-md-6 col-lg-3 mt-3 text-white">
+                        <div class='column'>
+                        <div class='blue-column'>
+                        <img src=${element.album.cover} alt="">
+                        <p>${element.title}</p>
                     </div>
+                    </div>
+                    </div>
+                    
+                   
                 `
             }
         })
